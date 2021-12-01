@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'aub-server-schedule-manager'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_19BEA589931F431AA82D4590E02A4A3A }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C4DF1F08296F4246B5309E80A1C02468 }}
