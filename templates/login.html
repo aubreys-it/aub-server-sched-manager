@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="static/css/site.css" media="screen" />
 </head>
 <body>
     <h1>Microsoft Identity Python Web App</h1>
@@ -11,6 +12,8 @@
     {% if config.get("B2C_RESET_PASSWORD_AUTHORITY") %}
     <li><a href='{{_build_auth_code_flow(authority=config["B2C_RESET_PASSWORD_AUTHORITY"])["auth_uri"]}}'>Reset Password</a></li>
     {% endif %}
+
+    <div align="center"><img src="static/images/aubreys_logo.png" /></div>
 
     <hr>
     <footer style="text-align: right">Powered by MSAL Python {{ version }}</footer>
