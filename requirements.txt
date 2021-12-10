@@ -6,7 +6,6 @@ msal>=1.7,<2
 pyodbc
 azure-keyvault-secrets
 azure-identity
-libgirepository1.0-dev
 vext
 vext.gi
 
