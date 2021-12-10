@@ -8,8 +8,8 @@ azure-keyvault-secrets
 wheel
 #vext
 #vext.gi
-pygobject
-#libgirepository
+#pygobject
+libgirepository1.0-dev
 #python-gi
 #gir1.2-glib-2.0
 azure-identity
