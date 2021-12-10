@@ -5,13 +5,13 @@ requests>=2,<3
 msal>=1.7,<2
 pyodbc
 azure-keyvault-secrets
-azure-identity
 #vext
 #vext.gi
 #pygobject
 #libgirepository
 python-gi
 gir1.2-glib-2.0
+azure-identity
 
 # cachelib==0.1  # Only need this if you are running Python 2
 # Note: This sample does NOT directly depend on cachelib.
