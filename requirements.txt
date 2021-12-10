@@ -5,9 +5,10 @@ requests>=2,<3
 msal>=1.7,<2
 pyodbc
 azure-keyvault-secrets
+wheel
 #vext
 #vext.gi
-#pygobject
+pygobject
 #libgirepository
 #python-gi
 #gir1.2-glib-2.0
