@@ -10,7 +10,7 @@ azure-keyvault-secrets
 #vext.gi
 #pygobject
 #libgirepository1.0-dev
-python3-gi
+#python3-gi
 #gir1.2-glib-2.0
 azure-identity
 
