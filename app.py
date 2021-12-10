@@ -116,7 +116,6 @@ def _save_cache(cache):
 
 def _build_msal_app(cache=None, authority=None):
     keyvault_name=f'https://server-sched-key-vault.vault.azure.net/'
-    keyvault='server-sched-key-vault'
     cred=DefaultAzureCredential()
     client=SecretClient(vault_url=keyvault_name, credential=cred)
     client_secret=client.get_secret('config-secret').value
