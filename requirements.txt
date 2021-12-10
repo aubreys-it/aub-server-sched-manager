@@ -9,9 +9,9 @@ azure-identity
 #vext
 #vext.gi
 #pygobject
-glib
 #libgirepository
 python-gi
+gir1.2-glib-2.0
 
 # cachelib==0.1  # Only need this if you are running Python 2
 # Note: This sample does NOT directly depend on cachelib.
