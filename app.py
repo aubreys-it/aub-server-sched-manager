@@ -33,7 +33,7 @@ app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 
 @app.route("/")
 def index():
-    '''
+    
     if not session.get("user"):
         return redirect(url_for("login"))
     #loc = locations[session["user"].get("name")]
@@ -49,7 +49,7 @@ def index():
         uid=locations[graph_data['officeLocation']]['user_id']
     except KeyError:
         loc=99
-    
+    '''
     conn_string='DRIVER='+driver+';SERVER='+server+';DATABASE='+database+';UID='+uid+';Authentication=ActiveDirectoryInteractive'+';'
     cnxn=pyodbc.connect(conn_string)
 
@@ -105,7 +105,7 @@ def graphcall():
         headers={'Authorization': 'Bearer ' + token['access_token']},
         ).json()
     return render_template('display.html', result=graph_data)
-
+'''
 
 def _load_cache():
     cache = msal.SerializableTokenCache()
@@ -140,7 +140,7 @@ def _get_token_from_cache(scope=None):
         result = cca.acquire_token_silent(scope, account=accounts[0])
         _save_cache(cache)
         return result
-'''
+
 
 app.jinja_env.globals.update(_build_auth_code_flow=_build_auth_code_flow)  # Used in template
 
