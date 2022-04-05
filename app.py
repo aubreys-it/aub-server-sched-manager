@@ -5,7 +5,7 @@ from flask_session import Session  # https://pythonhosted.org/Flask-Session
 import msal
 import pyodbc
 from azure.keyvault.secrets import SecretClient
-from azure.identity import DefaultAzureCredential
+#from azure.identity import DefaultAzureCredential
 import app_config
 
 
@@ -65,6 +65,7 @@ def index():
     loc_addr='Test Address Information'
     return render_template('index.html', user=session["user"], version=msal.__version__, loc_id=loc_addr)
 
+'''
 @app.route("/login")
 def login():
     # Technically we could use empty list [] as scopes to do just sign in,
@@ -139,6 +140,7 @@ def _get_token_from_cache(scope=None):
         result = cca.acquire_token_silent(scope, account=accounts[0])
         _save_cache(cache)
         return result
+'''
 
 app.jinja_env.globals.update(_build_auth_code_flow=_build_auth_code_flow)  # Used in template
 
