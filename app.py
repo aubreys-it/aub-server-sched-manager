@@ -33,7 +33,7 @@ app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 
 @app.route("/")
 def index():
-    
+    '''
     if not session.get("user"):
         return redirect(url_for("login"))
     #loc = locations[session["user"].get("name")]
@@ -49,7 +49,7 @@ def index():
         uid=locations[graph_data['officeLocation']]['user_id']
     except KeyError:
         loc=99
-    '''
+    
     conn_string='DRIVER='+driver+';SERVER='+server+';DATABASE='+database+';UID='+uid+';Authentication=ActiveDirectoryInteractive'+';'
     cnxn=pyodbc.connect(conn_string)
 
@@ -63,7 +63,8 @@ def index():
         loc_addr=row.loc_addr1
     '''
     loc_addr='Test Address Information'
-    return render_template('index.html', user=session["user"], version=msal.__version__, loc_id=loc_addr)
+    #return render_template('index.html', user=session["user"], version=msal.__version__, loc_id=loc_addr)
+    return render_template('index2.html', loc_id=loc_addr)
 
 '''
 @app.route("/login")
