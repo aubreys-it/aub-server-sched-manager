@@ -14,13 +14,13 @@ app.config.from_object(app_config)
 Session(app)
 
 driver='{ODBC Driver 17 for SQL Server}'
-server='mcp-alex.database.windows.net,1433'
-database='domesday'
+server=''
+database=''
 
 locations = {
-    "Lenoir City": {
+    "": {
         'loc_id': 8,
-        'user_id': 'lenoircity@aubreys.group'
+        'user_id': ''
     }
 }
 
