@@ -1,11 +1,11 @@
-import uuid
-import requests
-from flask import Flask, render_template, session, request, redirect, url_for
+#import uuid
+#import requests
+from flask import Flask, render_template
 from flask_session import Session  # https://pythonhosted.org/Flask-Session
-import msal
-import pyodbc
-from azure.keyvault.secrets import SecretClient
-from azure.identity import DefaultAzureCredential
+#import msal
+#import pyodbc
+#from azure.keyvault.secrets import SecretClient
+#from azure.identity import DefaultAzureCredential
 import app_config
 
 
