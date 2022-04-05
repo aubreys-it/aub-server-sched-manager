@@ -14,13 +14,13 @@ app.config.from_object(app_config)
 Session(app)
 
 driver='{ODBC Driver 17 for SQL Server}'
-server=''
-database=''
+server='mcp-alex.database.windows.net,1433'
+database='domesday'
 
 locations = {
-    "": {
+    "Lenoir City": {
         'loc_id': 8,
-        'user_id': ''
+        'user_id': 'lenoircity@aubreys.group'
     }
 }
 
@@ -33,6 +33,7 @@ app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 
 @app.route("/")
 def index():
+    '''
     if not session.get("user"):
         return redirect(url_for("login"))
     #loc = locations[session["user"].get("name")]
@@ -48,7 +49,7 @@ def index():
         uid=locations[graph_data['officeLocation']]['user_id']
     except KeyError:
         loc=99
-
+    '''
     conn_string='DRIVER='+driver+';SERVER='+server+';DATABASE='+database+';UID='+uid+';Authentication=ActiveDirectoryInteractive'+';'
     cnxn=pyodbc.connect(conn_string)
 
