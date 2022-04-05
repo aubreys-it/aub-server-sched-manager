@@ -49,7 +49,7 @@ def index():
         uid=locations[graph_data['officeLocation']]['user_id']
     except KeyError:
         loc=99
-    '''
+    
     conn_string='DRIVER='+driver+';SERVER='+server+';DATABASE='+database+';UID='+uid+';Authentication=ActiveDirectoryInteractive'+';'
     cnxn=pyodbc.connect(conn_string)
 
@@ -61,7 +61,8 @@ def index():
     rows=cursor.fetchall()
     for row in rows:
         loc_addr=row.loc_addr1
-
+    '''
+    loc_addr='Test Address Information'
     return render_template('index.html', user=session["user"], version=msal.__version__, loc_id=loc_addr)
 
 @app.route("/login")
