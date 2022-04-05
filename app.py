@@ -5,7 +5,7 @@ from flask_session import Session  # https://pythonhosted.org/Flask-Session
 import msal
 import pyodbc
 from azure.keyvault.secrets import SecretClient
-#from azure.identity import DefaultAzureCredential
+from azure.identity import DefaultAzureCredential
 import app_config
 
 
@@ -33,7 +33,7 @@ app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 
 @app.route("/")
 def index():
-    '''
+    
     if not session.get("user"):
         return redirect(url_for("login"))
     #loc = locations[session["user"].get("name")]
@@ -61,12 +61,12 @@ def index():
     rows=cursor.fetchall()
     for row in rows:
         loc_addr=row.loc_addr1
-    '''
+    
     loc_addr='Test Address Information'
-    #return render_template('index.html', user=session["user"], version=msal.__version__, loc_id=loc_addr)
-    return render_template('index2.html', loc_id=loc_addr)
+    return render_template('index.html', user=session["user"], version=msal.__version__, loc_id=loc_addr)
+    #return render_template('index2.html', loc_id=loc_addr)
 
-'''
+
 @app.route("/login")
 def login():
     # Technically we could use empty list [] as scopes to do just sign in,
@@ -106,7 +106,7 @@ def graphcall():
         headers={'Authorization': 'Bearer ' + token['access_token']},
         ).json()
     return render_template('display.html', result=graph_data)
-'''
+
 
 def _load_cache():
     cache = msal.SerializableTokenCache()
