@@ -5,7 +5,8 @@ CLIENT_ID = "f296c189-c551-4674-8388-164d9ee53b6f" # Application (client) ID of 
 AUTHORITY = "https://login.microsoftonline.com/64edf217-1246-405a-a5bc-c1922d9184e2"  # For multi-tenant app
 # AUTHORITY = "https://login.microsoftonline.com/64edf217-1246-405a-a5bc-c1922d9184e2"
 
-REDIRECT_PATH = "/getAToken"  # Used for forming an absolute URL to your redirect URI.
+REDIRECT_PATH = "/.auth/login/aad/callback"
+#REDIRECT_PATH = "/getAToken"  # Used for forming an absolute URL to your redirect URI.
                               # The absolute URL must match the redirect URI you set
                               # in the app's registration in the Azure portal.
 
