@@ -6,7 +6,7 @@ from flask_session import Session  # https://pythonhosted.org/Flask-Session
 #import pyodbc
 #from azure.keyvault.secrets import SecretClient
 #from azure.identity import DefaultAzureCredential
-#import app_config
+import app_config
 
 
 app = Flask(__name__)
