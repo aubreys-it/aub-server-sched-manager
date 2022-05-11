@@ -1,28 +1,28 @@
-import uuid
-import requests
+#import uuid
+#import requests
 from flask import Flask, render_template, session, request, redirect, url_for
 from flask_session import Session  # https://pythonhosted.org/Flask-Session
-import msal
-import pyodbc
-from azure.keyvault.secrets import SecretClient
-from azure.identity import DefaultAzureCredential
-import app_config
+#import msal
+#import pyodbc
+#from azure.keyvault.secrets import SecretClient
+#from azure.identity import DefaultAzureCredential
+#import app_config
 
 
 app = Flask(__name__)
 app.config.from_object(app_config)
 Session(app)
 
-driver='{ODBC Driver 17 for SQL Server}'
-server=''
-database=''
+#driver='{ODBC Driver 17 for SQL Server}'
+#server=''
+#database=''
 
-locations = {
-    "Lenoir City": {
-        'loc_id': 8,
-        'user_id': ''
-    }
-}
+#locations = {
+#    "Lenoir City": {
+#        'loc_id': 8,
+#        'user_id': ''
+#    }
+#}
 
 # This section is needed for url_for("foo", _external=True) to automatically
 # generate http scheme when this sample is running on localhost,
@@ -68,7 +68,7 @@ def index():
     #return render_template('index2.html', loc_id=loc_addr)
     '''
     return render_template('index.html', user='Grant', version='1', loc_id='00')
-
+'''
 @app.route("/login")
 def login():
     # Technically we could use empty list [] as scopes to do just sign in,
@@ -146,7 +146,7 @@ def _get_token_from_cache(scope=None):
 
 
 app.jinja_env.globals.update(_build_auth_code_flow=_build_auth_code_flow)  # Used in template
-
+'''
 if __name__ == "__main__":
     app.run()
 
