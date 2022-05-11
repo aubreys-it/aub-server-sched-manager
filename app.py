@@ -34,21 +34,21 @@ app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 @app.route("/")
 def index():
     
-    if not session.get("user"):
-        return redirect(url_for("login"))
+    #if not session.get("user"):
+        #return redirect(url_for("login"))
     #loc = locations[session["user"].get("name")]
-    token = _get_token_from_cache(app_config.SCOPE)
-    if not token:
-        return redirect(url_for("login"))
-    graph_data = requests.get(  # Use token to call downstream service
-        app_config.ENDPOINT,
-        headers={'Authorization': 'Bearer ' + token['access_token']},
-        ).json()
-    try:
-        loc=locations[graph_data['officeLocation']]['loc_id']
-        uid=locations[graph_data['officeLocation']]['user_id']
-    except KeyError:
-        loc=99
+    #token = _get_token_from_cache(app_config.SCOPE)
+    #if not token:
+        #return redirect(url_for("login"))
+    #graph_data = requests.get(  # Use token to call downstream service
+        #app_config.ENDPOINT,
+        #headers={'Authorization': 'Bearer ' + token['access_token']},
+        #).json()
+    #try:
+        #loc=locations[graph_data['officeLocation']]['loc_id']
+        #uid=locations[graph_data['officeLocation']]['user_id']
+    #except KeyError:
+        #loc=99
     
     '''
     conn_string='DRIVER='+driver+';SERVER='+server+';DATABASE='+database+';UID='+uid+';Authentication=ActiveDirectoryInteractive'+';'
