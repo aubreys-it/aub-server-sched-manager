@@ -2,6 +2,8 @@ import os
 
 CLIENT_ID = "f296c189-c551-4674-8388-164d9ee53b6f" # Application (client) ID of app registration
 
+CLIENT_SECRET = 'fN18Q~Df8IZg2y0rHSjjQ_S99DcaB4S13e0E6bfF'
+
 AUTHORITY = "https://login.microsoftonline.com/64edf217-1246-405a-a5bc-c1922d9184e2"  # For multi-tenant app
 # AUTHORITY = "https://login.microsoftonline.com/64edf217-1246-405a-a5bc-c1922d9184e2"
 
