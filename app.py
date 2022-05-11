@@ -67,7 +67,7 @@ def index():
     return render_template('index.html', user=session["user"], version=msal.__version__, loc_id=loc_addr)
     #return render_template('index2.html', loc_id=loc_addr)
     '''
-    return render_template('index.html', user='Grant', version='1', loc_id='00')
+    return render_template('index.html')
 '''
 @app.route("/login")
 def login():
