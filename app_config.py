@@ -7,7 +7,7 @@ CLIENT_SECRET = 'fN18Q~Df8IZg2y0rHSjjQ_S99DcaB4S13e0E6bfF'
 AUTHORITY = "https://login.microsoftonline.com/64edf217-1246-405a-a5bc-c1922d9184e2"  # For multi-tenant app
 # AUTHORITY = "https://login.microsoftonline.com/64edf217-1246-405a-a5bc-c1922d9184e2"
 
-REDIRECT_PATH = "/.auth/login/aad/callback"
+REDIRECT_PATH = "https://aub-ssc.azurewebsites.net/getAToken"
 #REDIRECT_PATH = "/getAToken"  # Used for forming an absolute URL to your redirect URI.
                               # The absolute URL must match the redirect URI you set
                               # in the app's registration in the Azure portal.
