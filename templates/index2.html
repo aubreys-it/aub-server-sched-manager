@@ -2,24 +2,211 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+*{
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    background: white;
+}
+
+.wrapper .sidebar{
+    background: #212a34;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 225px;
+    height: 100%;
+    padding: 30px 0;
+    transition: all 0.5s ease;
+}
+
+.wrapper .sidebar .profile{
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.wrapper .sidebar .profile img{
+    display: block;
+    padding-bottom: 10px;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.wrapper .sidebar .profile h3{
+    color: #ffffff;
+    margin: 10px 0 5px;
+}
+
+.wrapper .sidebar .profile p{
+    color: rgb(206, 240, 253);
+    font-size: 12px;
+}
+
+.wrapper .sidebar ul li a{
+    display: block;
+    padding: 13px 30px;
+    border-bottom: 1px solid #212a34;
+    color: rgb(241, 237, 237);
+    font-size: 14px;
+    position: relative;
+}
+
+.wrapper .sidebar ul li a .icon{
+    color: #dee4ec;
+    width: 30px;
+    display: inline-block;
+}
+
+.wrapper .sidebar ul .last-item {
+  position: absolute;
+  bottom: 40px;
+  font-size: 28px;
+  ;
+}
+
+.wrapper .sidebar ul .last-item .icon{
+  font-size: 24px;
+}
+
+.wrapper .sidebar ul li a:hover,
+.wrapper .sidebar ul li a.active{
+    color: #0c7db1;
+
+    background:white;
+    border-right: 2px solid rgb(5, 68, 104);
+}
+
+.wrapper .sidebar ul li a:hover .icon,
+.wrapper .sidebar ul li a.active .icon{
+    color: #0c7db1;
+}
+
+.wrapper .sidebar ul li a:hover:before,
+.wrapper .sidebar ul li a.active:before{
+    display: block;
+}
+
+.wrapper .section{
+    width: calc(100% - 225px);
+    margin-left: 225px;
+    transition: all 0.5s ease;
+}
+
+.wrapper .section .top_navbar{
+    background: #212a34;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding: 0 30px;
+
+}
+
+.wrapper .section .top_navbar .abc-alert {
+  padding-left: 20px;
+}
+
+.wrapper .section .top_navbar .top-nav-icon {
+  padding-left: 20px;
+}
+
+.wrapper .section .top_navbar .abc-alert a{
+    font-size: 28px;
+    color: chocolate;
+}
+
+.wrapper .section .top_navbar .abc-alert a:hover{
+    color: #a2ecff;
+}
+
+.wrapper .section .top_navbar .top-nav-icon a{
+    font-size: 28px;
+    color: #f4fbff;
+}
+
+.wrapper .section .top_navbar .top-nav-icon a:hover{
+    color: #a2ecff;
+}
+
+
+body.active .wrapper .sidebar{
+    left: -225px;
+}
+
+body.active .wrapper .section{
+    margin-left: 0;
+    width: 100%;
+}
+    </style>
 </head>
 <body>
-    <h1>Microsoft Identity Python Web App</h1>
-    <h2>Welcome Test User!</h2>
-    <h2>Location # {{ loc_id }}</h2>
+  <div class="wrapper">
+    <div class="section">
+      <div class="top_navbar">
+        <div class="top-nav-icon">
+          <a href="#">
+            <i class="fas fa-bars"></i>
+          </a>
+        </div>
+        <div class="abc-alert">
+          <a href="#">
+              <i class="fas fa-exclamation-triangle"></i>
+          </a>
+        </div>
+      </div>
+    <div class="sidebar">
+      <div class="profile">
+        <img src="aubreys_logo.png">
+        <h3>Server Schedule<br/> Manager<br/>&nbsp;</h3>
+        <ul>
+          <li>
+              <a href="#" class="active">
+                  <span class="icon"><i class="fas fa-calendar-alt"></i></span>
+                  <span class="item">Schedule</span>
+              </a>
+          </li>
+          <li>
+              <a href="#">
+                  <span class="icon"><i class="fas fa-users"></i></span>
+                  <span class="item">Employees</span>
+              </a>
+          </li>
+          <li>
+              <a href="#">
+                  <span class="icon"><i class="fas fa-cog"></i></span>
+                  <span class="item">Schedule Settings</span>
+              </a>
+          </li>
+          <li>
+              <a href="#">
+                  <span class="icon"><i class="fas fa-user-cog"></i></span>
+                  <span class="item">Manage Employees</span>
+              </a>
+          </li>
+          <li class="last-item">
+            <a href="#">
+              <span class="icon"><i class="far fa-user-circle"></i></span>
+              <span class="item">{{ user.get("name") }}</span>
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
 
-    <!--
-    {% if config.get("ENDPOINT") %}
-      <li><a href='/graphcall'>Call Microsoft Graph API</a></li>
-    {% endif %}
-
-    {% if config.get("B2C_PROFILE_AUTHORITY") %}
-      <li><a href='{{_build_auth_code_flow(authority=config["B2C_PROFILE_AUTHORITY"])["auth_uri"]}}'>Edit Profile</a></li>
-    {% endif %}
-    -->
-    <li><a href="/logout">Logout</a></li>
-    <hr>
-    <footer style="text-align: right">Powered by MSAL Python</footer>
 </body>
 </html>
 
