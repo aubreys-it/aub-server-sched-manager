@@ -63,6 +63,7 @@ body{
     color: rgb(241, 237, 237);
     font-size: 14px;
     position: relative;
+    text-align: center;
 }
 
 .wrapper .sidebar ul li a .icon{
@@ -72,14 +73,17 @@ body{
 }
 
 .wrapper .sidebar ul .last-item {
-  position: absolute;
+  position:absolute;
   bottom: 40px;
-  font-size: 28px;
-  ;
+  width: 225px;
 }
 
-.wrapper .sidebar ul .last-item .icon{
-  font-size: 24px;
+.wrapper .sidebar ul .last-item .icon {
+  font-size: 18px;
+}
+
+.wrapper .sidebar ul .last-item .item {
+  font-size: 18px;
 }
 
 .wrapper .sidebar ul li a:hover,
@@ -142,14 +146,123 @@ body{
     color: #a2ecff;
 }
 
-
-body.active .wrapper .sidebar{
-    left: -225px;
+.profile_menu{
+  background:rgb(206, 240, 253);
+    position: fixed;
+    bottom: 40px;
+    left: 225px;
+    width: 300px;
+    height: 180px;
+    padding: 30px 0;
+    transition: all 0.15s ease;
+    border-right: 2px solid #212a34;
+    border-top: 2px solid #212a34;
+    border-bottom: 2px solid #212a34;
+    visibility: hidden;
 }
 
-body.active .wrapper .section{
-    margin-left: 0;
-    width: 100%;
+.profile_menu .user {
+  padding-left: 25px;
+  font-size: 14px;
+}
+
+.profile_menu a {
+  color: chocolate;
+}
+
+.profile a:hover {
+  color: chocolate;
+}
+
+body.profile_active .profile_menu {
+    visibility: visible;
+}
+
+.alert_menu{
+  background:rgb(241, 237, 237);
+    position: fixed;
+    top: 20%;
+    left: 45%;
+    width: 300px;
+    padding: 0 0;
+    transition: all 0.15s ease;
+    border: 2px solid #212a34;
+    visibility: hidden;
+    text-align: center;
+}
+
+.alert_menu .header {
+  position: flex;
+  width: 100%;
+  height: 50px;
+  top: 0px;
+  background: #212a34;
+  color: rgb(241, 237, 237);
+  padding-top: 10px;
+}
+
+.alert_menu ul {
+  padding-bottom: 14px;;
+}
+
+.alert_menu ul li {
+  padding-top: 14px;
+}
+
+.alert_menu .expired {
+  color: red
+}
+
+.hamburger_menu{
+  background:#212a34;
+    position: fixed;
+    top: 100px;
+    right: 0;
+    width: 225px;
+    padding: 0 0;
+    transition: all 0.15s ease;
+    border: 2px solid #212a34;
+    visibility: hidden;
+    text-align: center;
+}
+
+.hamburger_menu ul li a{
+    display: block;
+    padding: 13px 30px;
+    border-bottom: 1px solid #212a34;
+    color: rgb(241, 237, 237);
+    font-size: 14px;
+    position: relative;
+    text-align: center;
+}
+
+.hamburger_menu ul li a .icon{
+    color: #dee4ec;
+    width: 30px;
+    display: inline-block;
+}
+body.alert_active .alert_menu {
+    visibility: visible;
+}
+
+.hamburger_menu ul li a:hover{
+    color: #0c7db1;
+
+    background:white;
+    border-right: 2px solid rgb(5, 68, 104);
+}
+
+.hamburger_menu ul li a:hover .icon {
+    color: #0c7db1;
+}
+
+.hamburger_menu ul li a:hover:before,
+.hamburger_menu ul li a.active:before{
+    display: block;
+}
+
+body.hamburger_active .hamburger_menu {
+  visibility: visible;
 }
     </style>
 </head>
@@ -200,13 +313,92 @@ body.active .wrapper .section{
           <li class="last-item">
             <a href="#">
               <span class="icon"><i class="far fa-user-circle"></i></span>
-              <span class="item">{{ user.get("name") }}</span>
+              <span class="item">Grant<!--{{ user.get("name") }}--></span>
             </a>
           </li>
       </ul>
     </div>
 </div>
-
+<div class="profile_menu">
+  <div class="user">
+    <h2>Grant Houser<h2>
+    <h3>Corporate</h3>
+    <br/>
+    <p>
+      <a href="#">Change Restaurant</a>
+    </p>&nbsp;
+    <p>
+      <a href="#">Logout</a>
+    </p>
+  </div>
+</div>
+<div class="alert_menu">
+  <div class="header">
+    <h2>ABC Alerts</h2>
+  </div>
+  <ul>
+    <li class="expired">
+      Employee Alert 1
+      <br/>
+      Alert Date 1
+    </li>
+    <li class="expired">
+      Employee Alert 2
+      <br/>
+      Alert Date 2
+    </li>
+    <li class="expired">
+      Employee Alert 3
+      <br/>
+      Alert Date 3
+    </li>
+    <li>
+      Employee Alert 4
+      <br/>
+      Alert Date 4
+    </li>
+    <li>
+      Employee Alert 5
+      <br/>
+      Alert Date 5
+    </li>
+    <li>
+      Employee Alert 6
+      <br/>
+      Alert Date 6
+    </li>
+  </ul>
+</div>
+<div class="hamburger_menu">
+  <ul>
+    <li>
+        <a href="#" class="active">
+            <span class="icon"><i class="fas fa-newspaper"></i></span>
+            <span class="item">Print Report</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <span class="icon"><i class="fas fa-envelope"></i></span>
+            <span class="item">Email Schedule</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <span class="icon"><i class="fas fa-print"></i></span>
+            <span class="item">Print Schedule</span>
+        </a>
+    </li>
+  </ul>
+</div>
+<script>
+  var profile_menu = document.querySelector(".last-item");
+  var alert_menu = document.querySelector(".abc-alert");
+  var hamburger_menu = document.querySelector(".top-nav-icon");
+  profile_menu.addEventListener("click", function(){document.querySelector("body").classList.toggle("profile_active");})
+  alert_menu.addEventListener("click", function(){document.querySelector("body").classList.toggle("alert_active");})
+  hamburger_menu.addEventListener("click", function(){document.querySelector("body").classList.toggle("hamburger_active");})
+</script>
 </body>
 </html>
 
