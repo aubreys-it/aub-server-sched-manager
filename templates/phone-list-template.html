@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+
+<head>
+    <style type="text/css">
+        table {
+            page-break-inside: auto
+        }
+
+        tr {
+            page-break-inside: avoid;
+            page-break-after: auto
+        }
+
+        thead {
+            display: table-header-group
+        }
+
+        tfoot {
+            display: table-footer-group
+        }
+
+        .page {
+            height: 11in;
+            width: 8.5in;
+            position: relative;
+            page-break-after: always;
+            page-break-inside: avoid;
+            -webkit-region-break-inside: avoid;
+            margin: 0;
+        }
+
+        .header {
+            text-align: center;
+            width: 100%;
+            border-bottom: 1px solid black;
+            text-transform: uppercase;
+            padding-bottom: 5px;
+            font-weight: bold;
+            font-size: 30px;
+        }
+
+        table {
+            font-size: 18px;
+            text-align: center;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        table,
+        th,
+        td {
+            border-bottom: 1px solid black;
+        }
+
+        .tbl-1 {
+            float: left;
+            border-right: 0px solid black;
+        }
+
+        .tbl-2 {
+            float: right;
+        }
+
+        .tbl-phone {
+            text-align: center;
+        }
+
+        .tbl-name {
+            border-left: 0px solid black;
+            text-align: left;
+        }
+
+        .tbl-abc {
+            text-align: center;
+        }
+
+        .tbl-booklocation {
+            border-right: 0px solid black;
+            text-align: center;
+        }
+
+        body {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        tr:nth-child(even) {
+            background: #CCC
+        }
+
+        tr:nth-child(odd) {
+            background: #FFF
+        }
+    </style>
+
+    <script type="text/javascript">
+        function printMe() {
+            window.print()
+        }
+    </script>
+
+</head>
+
+<body onload="printMe()">
+    <div class="page">
+        <div class="header">Server Phone List</div>
+
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>ABC Exp.</th>
+                        <th>Book Location</th>
+                    </tr>
+                </thead>
+                {{#each data}}
+                <tr>
+                    <td class="tbl-name">{{this.employee_name}}</td>
+                    <td class="tbl-phone">{{this.employee_phone}}</td>
+                    <td class="tbl-abc">{{this.employee_abc_expiration_date}}</td>
+                    <td class="tbl-booklocation">{{this.employee_abc_book_location}}</td>
+                </tr>
+                {{/each}}
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

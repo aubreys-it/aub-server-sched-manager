@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+
+<head>
+    <style type="text/css">
+        .primaryTable {
+            width: 8.5in;
+            page-break-after: always;
+            page-break-inside: avoid;
+            margin-bottom: 20px;
+        }
+
+        .header {
+            text-align: center;
+            width: 100%;
+            border-bottom: 1px solid black;
+            text-transform: uppercase;
+            padding-bottom: 5px;
+            font-weight: bold;
+            font-size: 30px;
+        }
+
+        .AmPmHeadding {
+            border-bottom: 1px solid black;
+            font-weight: bold;
+            text-align: center;
+            font-size: 25px;
+            height: 20px;
+        }
+
+        table {
+            font-size: 20px;
+            text-align: center;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .schedule table,
+        .schedule th,
+        .schedule td {
+            border-bottom: 1px solid black;
+        }
+
+        .tbl {
+            vertical-align: top;
+        }
+
+        .box-tbl td,
+        .box-tbl table {
+            font-size: 17px;
+            text-align: left;
+            width: 100%;
+            border-bottom: 0px;
+        }
+
+        .tbl-1 {
+            /* float: left; */
+            border-right: 1px solid black;
+        }
+
+        .tbl-name {
+            border-right: 1px solid black;
+            text-align: left;
+        }
+
+        .disclaimer {
+            text-align: left;
+            font-size: 15px;
+            display: inline-block;
+            padding-top: 20px;
+        }
+
+        .AM {
+            float: left;
+            margin-left: 12%;
+            text-align: center;
+            min-width: 210px;
+        }
+
+        .PM {
+            float: right;
+            margin-right: 15%;
+            text-align: center;
+            min-width: 210px;
+        }
+
+        .TgBarAM {
+            float: left;
+            margin-left: 12%;
+            min-width: 210px;
+            text-align: left;
+        }
+
+        .TgBarPM {
+            min-width: 210px;
+            float: right;
+            margin-right: 15%;
+            text-align: left;
+        }
+
+        .Box {
+            border: 1px solid black;
+            /* display: inline-block; */
+            text-transform: uppercase;
+            padding: 5px;
+            font-size: 17px;
+            margin-top: 20px;
+        }
+
+        .BoxHead {
+            border-bottom: 1px solid black;
+            width: 100%;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        body {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+    </style>
+    <script type="text/javascript">
+        function printMe() {
+            window.print()
+        }
+    </script>
+</head>
+
+<body>
+    {{#each data}}
+    <table class="primaryTable">
+        <tr>
+            <td>
+                <table>
+                    <tr class="header">
+                        <td colspan="2">{{this.day_name}} ({{formatdate @index}})</td>
+                        <td></td>
+                    </tr>
+                    <tr class="AmPmHeadding">
+                        <td>AM</td>
+                        <td>PM</td>
+                    </tr>
+                    <tr>
+                        <td class="tbl-1 tbl">
+                            <table class="schedule">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Picking Up Shift</th>
+                                </tr>
+                                {{#each this.am_employees}}
+                                <tr>
+                                    <td class="tbl-number">{{placeMC @index 'am' this.day_position @../index}}</td>
+                                    <td class="tbl-name">{{this.employee_name}}</td>
+                                    <td class="tbl-blank"></td>
+                                </tr>
+                                {{/each}}
+                            </table>
+                        </td>
+                        <td class="tbl">
+                            <table class="tbl-2 schedule">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Picking Up Shift</th>
+                                </tr>
+                                {{#each this.pm_employees}}
+                                <tr>
+                                    <td class="tbl-number">{{placeMC @index 'pm' this.day_position @../index}}</td>
+                                    <td class="tbl-name">{{this.employee_name}}</td>
+                                    <td class="tbl-blank"></td>
+                                </tr>
+                                {{/each}}
+
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{#ifShowbox this.togo_am this.bar_am}}
+                            <div class="TgBarAM Box">
+                                <div class="times box-tbl">
+                                    <table>
+                                        {{#if this.togo_am}}
+                                        <tr>
+                                            <td> AM ToGo: {{this.togo_am}} </td>
+                                        </tr>
+                                        {{/if}} {{{formatCSV this.bar_am 'AM Bar ' @index true}}}
+                                    </table>
+                                </div>
+                            </div>
+                            {{/ifShowbox}}
+                        </td>
+                        <td>
+                            {{#ifShowbox this.togo_pm this.bar_pm}}
+                            <div class="TgBarPM Box">
+                                <div class="times box-tbl">
+                                    <table>
+                                        {{#if this.togo_pm}}
+                                        <tr>
+                                            <td> PM ToGo: {{this.togo_pm}} </td>
+                                        </tr>
+                                        {{/if}} {{{formatCSV this.bar_pm 'PM Bar ' @index true}}}
+                                    </table>
+                                </div>
+                            </div>
+                            {{/ifShowbox}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="AM Box">
+                                <div class="BoxHead">
+                                    AM IN TIMES
+                                </div>
+                                <div class="times box-tbl">
+                                    <table>
+                                        {{{formatCSV this.in_times_am '' @index false}}}
+                                    </table>
+                                </div>
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="PM Box">
+                                <div class="BoxHead">
+                                    PM IN TIMES
+                                </div>
+                                <div class="times box-tbl">
+                                    <table>
+                                        {{{formatCSV this.in_times_pm '' @index false}}}
+                                    </table>
+                                </div>
+                            </div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="disclaimer">
+                                <ol>
+                                    {{{footer}}}
+                                </ol>
+                            </div>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    {{/each}}
+</body>
+</html>

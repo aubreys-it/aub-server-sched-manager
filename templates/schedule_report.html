@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+
+<head>
+    <style type="text/css">
+        table {
+            page-break-inside: auto
+        }
+
+        tr {
+            page-break-inside: avoid;
+            page-break-after: auto
+        }
+
+        thead {
+            display: table-header-group
+        }
+
+        tfoot {
+            display: table-footer-group
+        }
+
+        .page {
+            height: 11in;
+            width: 8.5in;
+            position: relative;
+            page-break-after: always;
+            page-break-inside: avoid;
+            -webkit-region-break-inside: avoid;
+            margin: 0;
+        }
+
+        .header {
+            text-align: center;
+            width: 100%;
+            /*border-bottom: 1px solid black;*/
+            text-transform: uppercase;
+
+            font-weight: bold;
+            font-size: 30px;
+        }
+
+        .header p {
+            text-align: center;
+            font-size: 10px;
+            padding-bottom: 5px;
+        }
+
+        table {
+            font-size: 18px;
+            text-align: center;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        table,
+        th,
+        td {
+            border-bottom: 1px solid black;
+        }
+
+        .tbl-1 {
+            float: left;
+            border-right: 0px solid black;
+        }
+
+        .tbl-2 {
+            float: right;
+        }
+
+        .tbl-phone {
+            text-align: center;
+        }
+
+        .tbl-name {
+            border-left: 0px solid black;
+            text-align: left;
+        }
+
+        .tbl-abc {
+            text-align: center;
+        }
+
+        .tbl-booklocation {
+            border-right: 0px solid black;
+            text-align: center;
+        }
+
+        body {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        tr:nth-child(even) {
+            background: #CCC
+        }
+
+        tr:nth-child(odd) {
+            background: #FFF
+        }
+    </style>
+
+    <script type="text/javascript">
+        function printMe() {
+            window.print()
+        }
+    </script>
+
+</head>
+
+<body onload="printMe()">
+    <div class="page">
+        <div class="header">Schedule Report
+            <p style="text-align: center;">scheduled/open</p>
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                        <th>Sunday</th>
+                    </tr>
+                </thead>
+
+                <tr>
+                    <td class="tbl-name">AM</td>
+                    {{#each json_report_schedule}}
+                    <td class="tbl-phone">{{this.am_scheduled}}/{{this.am_open}}</td>
+                    {{/each}}
+                </tr>
+
+                <tr>
+                    <td class="tbl-name">PM</td>
+                    {{#each json_report_schedule}}
+                    <td class="tbl-phone">{{this.pm_scheduled}}/{{this.pm_open}}</td>
+                    {{/each}}
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

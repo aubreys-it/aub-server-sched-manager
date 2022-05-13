@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+
+<style type="text/css">
+    table {
+        page-break-inside: auto
+    }
+
+    tr {
+        page-break-inside: avoid;
+        page-break-after: auto
+    }
+
+    thead {
+        display: table-header-group
+    }
+
+    tfoot {
+        display: table-footer-group
+    }
+
+    .page {
+        height: 11in;
+        width: 8.5in;
+        position: relative;
+        page-break-after: always;
+        page-break-inside: avoid;
+        -webkit-region-break-inside: avoid;
+        margin: 0;
+    }
+
+    .header {
+        text-align: center;
+        width: 100%;
+        border-bottom: 1px solid black;
+        text-transform: uppercase;
+        padding-bottom: 5px;
+        font-weight: bold;
+        font-size: 30px;
+    }
+
+    table {
+        font-size: 18px;
+        text-align: center;
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .page-break {
+        page-break-after: always;
+    }
+
+    table,
+    th,
+    td {
+        border-bottom: 1px solid black;
+    }
+
+
+
+    .td-day {
+        text-align: center;
+        border-right: 1px solid black;
+        width: 70px;
+    }
+
+    .td-cnt {
+        text-align: center;
+        border-right: 1px solid black;
+        width: 20px;
+    }
+
+    .td-name {
+        border-left: 1px solid black;
+        text-align: center;
+        /*border-right: 1px solid black;*/
+    }
+
+
+
+    body {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    tr:nth-child(even) {
+        background: #CCC
+    }
+
+    tr:nth-child(odd) {
+        background: #FFF
+    }
+</style>
+
+<script type="text/javascript">
+    function printMe() {
+        window.print()
+    }
+</script>
+
+</head>
+
+<body onload="printMe()">
+    <div class="page">
+        <div class="header">Employees Schedule Report</div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>CNT</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                        <th>Sun</th>
+                    </tr>
+                </thead>
+                {{#each json_employee_days}}
+                <tr>
+                    <td class="td-name">{{this.employee_name}}</td>
+                    <td class="td-cnt">{{shiftcount @index}}</td>
+                    {{#each this.shifts_am}}
+                    <td class="td-day">{{retshifts @index @../index}}</td>
+                    {{/each}}
+                </tr>
+                {{/each}}
+
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

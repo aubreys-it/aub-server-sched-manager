@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+      nav {
+        overflow: hidden;
+        background-color: #212a34;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        vertical-align: middle;
+      }
+      .nav-logo {
+        float: left;
+        width: 300px;
+        margin-left: 10px;
+        margin-top:  10px;
+        margin-bottom: 10px;
+      }
+      .nav-item {
+        float: right;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        position: fixed;
+        top: 20px;
+        margin-left: 88%;
+      }
+      .nav-item-icons {
+        height: 35px;
+        width: 35px;
+        padding-left: 20px;
+      }
+      h1 {
+            color:antiquewhite;
+            font-size: xx-large;
+        }
+      h2 {
+        color:antiquewhite;
+      }
+      .wrapper .sidebar {
+        background: #212a34;
+        position: fixed;
+        left: 0;
+        width: 225px;
+        height: 100%;
+        padding: 20px 0;
+        transition: all 0.5s ease;
+      }
+    </style>
+</head>
+<body>
+    <nav>
+      <div class="nav-logo">
+        <img src="aubreys_logo.png" />
+      </div>
+      <div><h1>Server Schedule Manager</h1>
+        <div class="nav-item">
+          <img class="nav-item-icons" src="alert.png" />
+          <img class="nav-item-icons" src="hamburger.png" />
+          <img class="nav-item-icons" src="badge_icon.png" />
+        </div>
+      </div>
+    </nav>
+    <div class="wrapper">
+      <div class="sidebar">
+        
+      </div>
+    </div>
+    <h2>Welcome {{ user.get("name") }}!</h2>
+
+    {% if config.get("ENDPOINT") %}
+      <li><a href='/graphcall'>Call Microsoft Graph API</a></li>
+    {% endif %}
+
+    {% if config.get("B2C_PROFILE_AUTHORITY") %}
+      <li><a href='{{_build_auth_code_flow(authority=config["B2C_PROFILE_AUTHORITY"])["auth_uri"]}}'>Edit Profile</a></li>
+    {% endif %}
+
+    <li><a href="/logout">Logout</a></li>
+    <hr>
+    <footer style="text-align: right">Powered by MSAL Python {{ version }}</footer>
+</body>
+</html>
